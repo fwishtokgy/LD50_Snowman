@@ -7,10 +7,25 @@ public class GameStateManager : Singleton<GameStateManager>
 {
     protected Dictionary<StateType, GameState> gameStates;
 
-    public class GameStateEvent : UnityEvent<StateType> { }
-    public GameStateEvent ChangedState = new GameStateEvent();
+    [System.Serializable]
+    public delegate void GameStateChangeEvent(StateType state);
+    protected event GameStateChangeEvent ChangedState;
+
+    public void OnStateChange(GameStateChangeEvent func)
+    {
+        if (IsInitialized)
+        {
+            func(StartingState);
+        }
+        ChangedState += func;
+    }
 
     protected StateType currentState;
+
+    [SerializeField]
+    protected StateType StartingState;
+
+    public bool IsInitialized { get; protected set; }
 
     private void Start()
     {
@@ -22,7 +37,9 @@ public class GameStateManager : Singleton<GameStateManager>
             gameStates.Add(gamestate.Type, gamestate);
             index++;
         }
-        currentState = StateType.START;
+        IsInitialized = true;
+        currentState = StartingState;
+        ChangedState.Invoke(StartingState);
     }
     public GameState GetState(StateType name)
     {
@@ -39,8 +56,6 @@ public class GameStateManager : Singleton<GameStateManager>
             gameStates.ContainsKey(newState) && 
             currentState != newState)
         {
-            gameStates[currentState].EndState();
-            gameStates[newState].StartState();
             ChangedState.Invoke(newState);
             currentState = newState;
         }

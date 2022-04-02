@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class MovementInput : MyMonoBehaviour
+public class MovementInput : MainPlayMonoBehaviour
 {
     [SerializeField]
     protected Transform Root;
@@ -36,9 +36,10 @@ public class MovementInput : MyMonoBehaviour
     protected Coroutine MoveRoutine;
     protected Coroutine JumpRoutine;
 
-    // Start is called before the first frame update
-    void Start()
+
+    protected override void OnStateStart()
     {
+        base.OnStateStart();
         if (oldNode != null)
         {
             StaticUtilities.ParentTo(Root, oldNode.transform);
@@ -46,13 +47,18 @@ public class MovementInput : MyMonoBehaviour
         }
         StartCoroutine(WaitForSceneReady());
     }
+    protected override void OnStateEnd()
+    {
+        base.OnStateEnd();
+        isOpenToInput = false;
+    }
 
     IEnumerator WaitForSceneReady()
     {
         yield return new WaitUntil(() => movementNodes.IsInitialized);
         currentNode = movementNodes.GetCurrentNode();
         yield return StartCoroutine(LerpToNewNode());
-        IsInitialized = true;
+        if (!IsInitialized) IsInitialized = true;
         isOpenToInput = true;
     }
 
@@ -119,26 +125,30 @@ public class MovementInput : MyMonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isOpenToInput)
+        if (IsRunning)
         {
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) ||
+            if (isOpenToInput)
+            {
+                if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) ||
                 Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                oldNode = currentNode;
-                currentNode = movementNodes.MoveToPrevNode();
-                if (MoveRoutine != null) StopCoroutine(MoveRoutine);
-                MoveRoutine = StartCoroutine(LerpToNewNode());
-                StartCoroutine(CoolDown());
+                {
+                    oldNode = currentNode;
+                    currentNode = movementNodes.MoveToPrevNode();
+                    if (MoveRoutine != null) StopCoroutine(MoveRoutine);
+                    MoveRoutine = StartCoroutine(LerpToNewNode());
+                    StartCoroutine(CoolDown());
+                }
+                else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) ||
+                    Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    oldNode = currentNode;
+                    currentNode = movementNodes.MoveToNextNode();
+                    if (MoveRoutine != null) StopCoroutine(MoveRoutine);
+                    MoveRoutine = StartCoroutine(LerpToNewNode());
+                    StartCoroutine(CoolDown());
+                }
             }
-            else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) ||
-                Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                oldNode = currentNode;
-                currentNode = movementNodes.MoveToNextNode();
-                if (MoveRoutine != null) StopCoroutine(MoveRoutine);
-                MoveRoutine = StartCoroutine(LerpToNewNode());
-                StartCoroutine(CoolDown());
-            }
+            
             if (!isJumping)
             {
                 if (Input.GetKeyDown(KeyCode.Space))

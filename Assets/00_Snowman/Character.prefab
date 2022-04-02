@@ -81,7 +81,7 @@ MonoBehaviour:
   movementNodes: {fileID: 0}
   oldNode: {fileID: 0}
   LerpSpeed: 12
-  JumpDuration: 0.4
+  JumpDuration: 0.3
   JumpHeight: 2.5
   InputCooldown: 0.1
 --- !u!1 &7429976754565828876

@@ -2,22 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameTime : MyMonoBehaviour
+public class GameTime : MainPlayMonoBehaviour
 {
-    protected bool IsRunning;
-    protected void OnGameStart()
+    protected float RLSecondsCount;
+    public float TotalRaw { get { return RLSecondsCount; } }
+
+    protected float microseconds;
+    protected int rawseconds, seconds, minutes, hours, leftovers;
+
+    public float MicroSeconds { get { return microseconds; } }
+    public int Seconds { get { return seconds; } }
+    public int Minutes { get { return minutes; } }
+    public int Hours { get { return hours; } }
+
+    protected void Reset()
     {
-        IsRunning = true;
-    }
-    protected void OnGameEnd()
-    {
-        IsRunning = false;
+        RLSecondsCount = 0f;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    protected override void OnStateStart()
     {
-        GameStateManager.Instance.GetState(StateType.MAIN);
+        base.OnStateStart();
+        Reset();
+    }
+
+    protected override void OnStateEnd()
+    {
+        base.OnStateEnd();
     }
 
     // Update is called once per frame
@@ -25,7 +36,15 @@ public class GameTime : MyMonoBehaviour
     {
         if (IsRunning)
         {
+            RLSecondsCount += Time.deltaTime;
+            rawseconds = Mathf.FloorToInt(RLSecondsCount);
+            microseconds = RLSecondsCount - rawseconds;
 
+            hours = (rawseconds - (rawseconds % 3600)) / 3600;
+            leftovers = rawseconds % 3600;
+            minutes = (leftovers - (leftovers % 60)) / 60;
+            leftovers = leftovers % 60;
+            seconds = leftovers;
         }
     }
 }

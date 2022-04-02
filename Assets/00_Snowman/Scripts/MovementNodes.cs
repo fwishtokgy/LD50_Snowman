@@ -11,13 +11,16 @@ public class MovementNodes : MyMonoBehaviour
     void Start()
     {
         nodes = new List<MovementNode>();
+        var index = 0;
         // nodes should be from farthest to nearest
         foreach (var node in this.GetComponentsInChildren<MovementNode>())
         {
             nodes.Add(node);
+            node.Init(index, this);
+            index++;
         }
 
-        nodePointer = (nodes.Count + ((nodes.Count % 2 == 0) ? 0 : 1)) / 2;
+        nodePointer = (nodes.Count + ((nodes.Count % 2 == 0) ? 0 : -1)) / 2;
         print("NODEPOINTER: " + nodePointer);
 
         IsInitialized = true;

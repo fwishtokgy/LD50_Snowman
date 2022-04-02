@@ -1,5 +1,8 @@
 using System;
 using UnityEngine;
+/// <summary>
+/// https://easings.net/
+/// </summary>
 
 static public class Easings
 {

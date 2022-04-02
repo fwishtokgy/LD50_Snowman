@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class MovementNode : MyMonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int Index { get; protected set; }
+    public MovementNodes Manager { get; protected set; }
+    public void Init(int index, MovementNodes manager)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Index = index;
+        Manager = manager;
+        IsInitialized = true;
     }
 }

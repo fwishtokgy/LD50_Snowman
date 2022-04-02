@@ -21,7 +21,6 @@ public class MovementNodes : MyMonoBehaviour
         }
 
         nodePointer = (nodes.Count + ((nodes.Count % 2 == 0) ? 0 : -1)) / 2;
-        print("NODEPOINTER: " + nodePointer);
 
         IsInitialized = true;
     }

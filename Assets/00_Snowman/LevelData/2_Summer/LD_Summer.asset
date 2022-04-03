@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: LD_Summer
   m_EditorClassIdentifier: 
   LevelSeason: 2
+  NextSeason: 3
   Drops: []
   Props: []
-  Environment: {fileID: 0}
-  LengthInTicks: 0
+  Environment: {fileID: 11400000, guid: 1941877f1ef947e4681c23acd3a9d375, type: 2}
+  LengthInTicks: 40
+  PrimaryColor: {r: 0.91372555, g: 0.6901961, b: 0, a: 1}

@@ -46,6 +46,13 @@ public class TileNodeMaster : MyMonoBehaviour
     [SerializeField]
     protected Transform TestNodeRoot;
 
+
+    public delegate void TileNodeEvent(TileNode node);
+    public TileNodeEvent OnQueuedNode;
+    public TileNodeEvent OnActivatedNode;
+    public TileNodeEvent OnDroppedNode;
+
+
     private void Start()
     {
         StartCoroutine(GenerateBelt());
@@ -101,11 +108,11 @@ public class TileNodeMaster : MyMonoBehaviour
             {
                 newnode.transform.position = new Vector3(RightMostActivePoint + newnode.Width, GenerationHeight, midpoint.z);
                 newnode.State = TileNodeState.QUEUED;
+                OnQueuedNode?.Invoke(newnode);
             }
             else if (nindex < (VisibleNodeCount + buffer))
             {
                 newnode.transform.position = new Vector3(x, GenerationHeight, midpoint.z);
-                newnode.State = TileNodeState.ACTIVE;
                 StartCoroutine(FancyNodeDrop(newnode));
                 dropnode.Enqueue(newnode);
             }
@@ -155,7 +162,9 @@ public class TileNodeMaster : MyMonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         node.transform.position = endpoint;
+        node.State = TileNodeState.ACTIVE;
         node.IsTransitioning = false;
+        OnActivatedNode?.Invoke(node);
     }
 
     IEnumerator FancyNodeDisposal(TileNode node, float lostTime = 0f)
@@ -199,6 +208,7 @@ public class TileNodeMaster : MyMonoBehaviour
             node.State = TileNodeState.QUEUED;
             rawX = rawX % RelativeBeltLength;
             node.transform.position = new Vector3(RightMostActivePoint + node.Width, GenerationHeight, RightBoundaryPoint.position.z);
+            OnQueuedNode?.Invoke(node);
         }
         else if (node.State == TileNodeState.ACTIVE &&
             relativeX < DropToDiscardPoint)
@@ -206,6 +216,7 @@ public class TileNodeMaster : MyMonoBehaviour
             node.State = TileNodeState.DISPOSED;
             float lostTime = 0f;
             StartCoroutine(FancyNodeDisposal(node, lostTime));
+            OnDroppedNode?.Invoke(node);
         }
         else if (node.State == TileNodeState.QUEUED &&
             relativeX < DropToActivePoint &&

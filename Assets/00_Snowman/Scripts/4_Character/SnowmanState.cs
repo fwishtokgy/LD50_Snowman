@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SnowmanState : MonoBehaviour
+public class SnowmanState : MainPlayMonoBehaviour
 {
     protected float MeltPercentile;
-    protected int Score;
 
+    [SerializeField]
+    protected ScoreWatcher Score;
 
+    // maybe give snowman shades if good score, crown if really good score?
 
     public void ApplyHeat(int heatUnits)
     {
@@ -18,5 +20,12 @@ public class SnowmanState : MonoBehaviour
         ApplyHeat(-coldUnits);
     }
 
-
+    protected override void OnStateStart()
+    {
+        base.OnStateStart();
+    }
+    protected override void OnStateEnd()
+    {
+        base.OnStateEnd();
+    }
 }

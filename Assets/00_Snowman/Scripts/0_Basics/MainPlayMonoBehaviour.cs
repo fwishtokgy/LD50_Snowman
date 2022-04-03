@@ -18,6 +18,8 @@ public abstract class MainPlayMonoBehaviour : MyStateMonoBehaviour
     void Start()
     {
         StartCoroutine(WaitForStateManager(StateType.MAIN));
+        OnInit();
     }
-    
+
+    protected virtual void OnInit() { }
 }

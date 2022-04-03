@@ -16,3 +16,5 @@ public enum HitType { TEMPERATURE_EFFECT, BAG_COLLISION, INSTADEATH }
 
 [System.Flags]
 public enum PropPlacement { BACKGROUND, MIDBACK, MIDFRONT, FRONT }
+
+public enum PlayerRank { POO, DECENT, BRONZE, SILVER, GOLD, PLATINUM }

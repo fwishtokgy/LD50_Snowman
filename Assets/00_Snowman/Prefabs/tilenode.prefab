@@ -91,6 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3685990731779630545}
   - component: {fileID: 3685990731779630550}
+  - component: {fileID: 6182363829748345644}
   m_Layer: 0
   m_Name: tilenode
   m_TagString: Untagged
@@ -128,8 +129,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScaledStandardUnityCube: {fileID: 3685990733450915070}
   RelativeX: 0
-  State: 0
   IsTransitioning: 0
+--- !u!114 &6182363829748345644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3685990731779630544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e2fe380d6cc59f40ac3421a34f5e69b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3685990733450915065
 GameObject:
   m_ObjectHideFlags: 0

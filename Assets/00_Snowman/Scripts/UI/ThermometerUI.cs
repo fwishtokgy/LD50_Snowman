@@ -7,7 +7,8 @@ public class ThermometerUI : MainPlayMonoBehaviour
     [SerializeField]
     protected List<Renderer> renderers;
 
-
+    [SerializeField]
+    protected Transform Filling;
 
     [System.Serializable]
     public class PercentileStages

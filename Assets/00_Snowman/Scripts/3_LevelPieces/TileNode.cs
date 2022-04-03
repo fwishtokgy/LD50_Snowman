@@ -14,8 +14,39 @@ public class TileNode : MyMonoBehaviour
 
     public float RelativeX;
 
-    public TileNodeState State;
+    protected TileNodeState state;
+    public TileNodeState State
+    {
+        get
+        {
+            return state;
+        }
+        set
+        {
+            if (state != value)
+            {
+                switch (value)
+                {
+                    case TileNodeState.ACTIVE:
+                        OnActivated?.Invoke();
+                        break;
+                    case TileNodeState.DISPOSED:
+                        OnDeactivated?.Invoke();
+                        break;
+                }
+                state = value;
+            }
+        }
+    }
 
     public bool IsTransitioning;
+
+    public delegate void SingleTileStateEvent();
+    public SingleTileStateEvent OnActivated;
+    public SingleTileStateEvent OnDeactivated;
+
+    [SerializeField]
+    protected TileNodeGrid gridMap;
+    public TileNodeGrid GridMap { get { return gridMap; } }
 }
 public enum TileNodeState { DISPOSED, ACTIVE, QUEUED }

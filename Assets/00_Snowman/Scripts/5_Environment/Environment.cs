@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Environment : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    protected LevelHandler levelHandler;
+
+    private void Start()
     {
-        
+        levelHandler.OnNewSeason += OnNewSeason;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected void OnNewSeason(LevelData data)
     {
-        
+
     }
+
 }

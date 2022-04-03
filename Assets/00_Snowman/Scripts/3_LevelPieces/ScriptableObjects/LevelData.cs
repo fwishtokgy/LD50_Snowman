@@ -6,8 +6,10 @@ using UnityEngine;
 public class LevelData : ScriptableObject
 {
     public Season LevelSeason;
+    public Season NextSeason;
     public List<DropItem> Drops;
     public List<PropItem> Props;
     public EnviroSettings Environment;
     public int LengthInTicks;
+    public Color PrimaryColor;
 }

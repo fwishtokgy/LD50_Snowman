@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: LD_Apocalypse
   m_EditorClassIdentifier: 
   LevelSeason: 3
+  NextSeason: 4
   Drops: []
   Props: []
-  Environment: {fileID: 0}
-  LengthInTicks: 0
+  Environment: {fileID: 11400000, guid: ee3337137cd02814f952eac161d01db6, type: 2}
+  LengthInTicks: 80
+  PrimaryColor: {r: 0.8588236, g: 0.24705884, b: 0.30980393, a: 1}

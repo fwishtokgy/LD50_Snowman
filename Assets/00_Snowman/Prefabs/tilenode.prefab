@@ -47,7 +47,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2885753784313465695}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -128,7 +128,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScaledStandardUnityCube: {fileID: 3685990733450915070}
   RelativeX: 0
-  index: 0
   State: 0
   IsTransitioning: 0
 --- !u!1 &3685990733450915065

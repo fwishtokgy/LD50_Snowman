@@ -20,7 +20,7 @@ public class ScoreWatcher : MainPlayMonoBehaviour
         Increment(-amount);
     }
 
-    public void Clear()
+    public void Reset()
     {
         score = 0;
         OnScoreChange?.Invoke(score);
@@ -29,7 +29,7 @@ public class ScoreWatcher : MainPlayMonoBehaviour
     protected override void OnStateStart()
     {
         base.OnStateStart();
-        Clear();
+        Reset();
     }
 
     public delegate void ScoreChangeEvent(int value);

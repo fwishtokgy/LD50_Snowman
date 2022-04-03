@@ -12,4 +12,5 @@ public class LevelData : ScriptableObject
     public EnviroSettings Environment;
     public int LengthInTicks;
     public Color PrimaryColor;
+    public float RiseRate;
 }

@@ -19,3 +19,4 @@ MonoBehaviour:
   Environment: {fileID: 11400000, guid: 1ca59df815899344cbffc264c9965f53, type: 2}
   LengthInTicks: 80
   PrimaryColor: {r: 0.91372555, g: 0.12941177, b: 0.68235296, a: 1}
+  RiseRate: 2

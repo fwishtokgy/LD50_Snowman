@@ -14,6 +14,18 @@ public class LevelHandler : MainPlayMonoBehaviour
 
     protected Season currentSeason;
 
+    public LevelData CurrentSeason
+    {
+        get
+        {
+            if (LevelData != null && LevelData.ContainsKey(currentSeason))
+            {
+                return LevelData[currentSeason];
+            }
+            return null;
+        }
+    }
+
     [SerializeField]
     protected GameNodeTick GameTick;
 
@@ -35,6 +47,18 @@ public class LevelHandler : MainPlayMonoBehaviour
         currentSeason = LevelDataStorage.StartingSeason;
         OnNewSeason?.Invoke(LevelData[currentSeason]);
         IsInitialized = true;
+    }
+
+    protected override void OnStateStart()
+    {
+        base.OnStateStart();
+        Reset();
+    }
+
+    public void Reset()
+    {
+        currentSeason = LevelDataStorage.StartingSeason;
+        OnNewSeason?.Invoke(LevelData[currentSeason]);
     }
 
     protected void OnNodePassed(TileNode node)

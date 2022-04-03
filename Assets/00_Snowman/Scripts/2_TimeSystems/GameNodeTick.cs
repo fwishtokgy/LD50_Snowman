@@ -20,6 +20,13 @@ public class GameNodeTick : MainPlayMonoBehaviour
         TileMaster.OnDroppedNode += OnNodePassed;
     }
 
+    protected override void OnStateStart()
+    {
+        base.OnStateStart();
+        NodeTicksGenerated = 0;
+        NodeTicksPassed = 0;
+    }
+
     protected void OnNewNode(TileNode node)
     {
         if (IsRunning)

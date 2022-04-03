@@ -9,6 +9,13 @@ public class RankWatcher : MainPlayMonoBehaviour
 
     protected int currentRank;
 
+    public RankData Rank { 
+        get
+        {
+            return PossibleRanks[currentRank];
+        } 
+    }
+
     [SerializeField]
     protected ScoreWatcher Score;
 
@@ -52,6 +59,11 @@ public class RankWatcher : MainPlayMonoBehaviour
         var isMaxRank = currentRank >= PossibleRanks.Count;
         if (isMaxRank) currentRank = PossibleRanks.Count - 1;
         OnRankChanged?.Invoke(PossibleRanks[currentRank], PossibleRanks[currentRank + (isMaxRank ? 0 : 1)]);
+    }
+
+    public void Reset()
+    {
+        currentRank = (int)PlayerRank.POO;
     }
 
     [System.Serializable]

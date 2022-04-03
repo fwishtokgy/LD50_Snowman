@@ -7,6 +7,9 @@ public class Environment : MonoBehaviour
     [SerializeField]
     protected LevelHandler levelHandler;
 
+    [SerializeField]
+    protected AmbientTemp Temperature;
+
     private void Start()
     {
         levelHandler.OnNewSeason += OnNewSeason;
@@ -14,7 +17,7 @@ public class Environment : MonoBehaviour
 
     protected void OnNewSeason(LevelData data)
     {
-
+        Temperature.RiseRate = data.RiseRate;
     }
 
 }

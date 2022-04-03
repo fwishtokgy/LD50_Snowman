@@ -17,5 +17,6 @@ MonoBehaviour:
   Drops: []
   Props: []
   Environment: {fileID: 11400000, guid: e60144a529a175841ae0dbff43e0c774, type: 2}
-  LengthInTicks: 20
+  LengthInTicks: 2
   PrimaryColor: {r: 0.24705884, g: 0.74509805, b: 0.42352945, a: 1}
+  RiseRate: 0.25

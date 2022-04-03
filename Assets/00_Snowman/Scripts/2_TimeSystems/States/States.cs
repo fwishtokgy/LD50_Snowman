@@ -6,3 +6,8 @@ public enum StateType
 {
     START, MAIN, END
 }
+
+public enum Season
+{
+    WINTER, SPRING, SUMMER, APOCALYPSE, SUPERNOVA
+}

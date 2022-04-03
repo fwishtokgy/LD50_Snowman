@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileNode : MonoBehaviour
+public class TileNode : MyMonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    /// <summary>
+    /// We use this to determine the size of each node
+    /// </summary>
+    [SerializeField]
+    protected Transform ScaledStandardUnityCube;
+    public float Width { get { return ScaledStandardUnityCube.localScale.x; } }
+    public float Depth { get { return ScaledStandardUnityCube.localScale.z; } }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public float RelativeX;
+
+    public TileNodeState State;
+
+    public bool IsTransitioning;
 }
+public enum TileNodeState { DISPOSED, ACTIVE, QUEUED }

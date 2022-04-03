@@ -12,4 +12,6 @@ public class DropItem : ScriptableObject
     public bool IsStoreableInBag;
 
     public int Value;
+
+    public int Chance;
 }

@@ -36,7 +36,7 @@ public class LevelHandler : MainPlayMonoBehaviour
 
     protected override void OnInit()
     {
-        TileMaster.OnQueuedNode += OnNodePassed;
+        TileMaster.OnStartedActivatingNode += OnNodePassed;
         GameTick.OnGeneratedTicksIncrement += CheckSeason;
 
         LevelData = new Dictionary<Season, LevelData>();
@@ -67,6 +67,8 @@ public class LevelHandler : MainPlayMonoBehaviour
         {
             var gridmap = node.GridMap;
             var data = LevelData[currentSeason];
+
+            node.TileRenderer.material = data.Environment.NormalMaterial;
         }
     }
 
@@ -75,6 +77,7 @@ public class LevelHandler : MainPlayMonoBehaviour
         DaysPassedInSeason++;
         if (DaysPassedInSeason > LevelData[currentSeason].LengthInTicks)
         {
+            DaysPassedInSeason = 0;
             currentSeason = LevelData[currentSeason].NextSeason;
             OnNewSeason?.Invoke(LevelData[currentSeason]);
         }

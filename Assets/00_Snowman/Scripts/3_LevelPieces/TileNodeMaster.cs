@@ -49,6 +49,7 @@ public class TileNodeMaster : MyMonoBehaviour
 
     public delegate void TileNodeEvent(TileNode node);
     public TileNodeEvent OnQueuedNode;
+    public TileNodeEvent OnStartedActivatingNode;
     public TileNodeEvent OnActivatedNode;
     public TileNodeEvent OnDroppedNode;
 
@@ -150,6 +151,7 @@ public class TileNodeMaster : MyMonoBehaviour
     IEnumerator FancyNodeDrop(TileNode node, float lostTime = 0f)
     {
         node.IsTransitioning = true;
+        OnStartedActivatingNode?.Invoke(node);
         var startpoint = node.transform.position;
         var endpoint = new Vector3(startpoint.x, RestingHeight, startpoint.z);
         var duration = (GenerationHeight - RestingHeight) / Gravity;

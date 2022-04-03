@@ -14,6 +14,14 @@ public class TileNode : MyMonoBehaviour
 
     public float RelativeX;
 
+    public Season season;
+
+    public bool isTailEnd;
+
+    [SerializeField]
+    protected Renderer tileRenderer;
+    public Renderer TileRenderer { get { return tileRenderer; } }
+
     protected TileNodeState state;
     public TileNodeState State
     {

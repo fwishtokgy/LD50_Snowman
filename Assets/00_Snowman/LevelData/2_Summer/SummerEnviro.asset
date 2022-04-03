@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: SummerEnviro
   m_EditorClassIdentifier: 
   sunSize: 0
-  TopSky: {r: 0, g: 0, b: 0, a: 0}
-  MidSky: {r: 0, g: 0, b: 0, a: 0}
-  BotSky: {r: 0, g: 0, b: 0, a: 0}
-  Lighting: {r: 0, g: 0, b: 0, a: 0}
-  NormalMaterial: {fileID: 0}
-  LastTileMaterial: {fileID: 0}
+  TopSky: {r: 1, g: 0.53333336, b: 0.5137255, a: 1}
+  MidSky: {r: 0.5411765, g: 0.8196079, b: 0.91372555, a: 1}
+  BotSky: {r: 0.7803922, g: 0.7843138, b: 0.92549026, a: 1}
+  Lighting: {r: 0.9803922, g: 0.74509805, b: 0.9725491, a: 1}
+  NormalMaterial: {fileID: 2100000, guid: 0056791fd34c7f647ba54248700b214c, type: 2}
+  LastTileMaterial: {fileID: 2100000, guid: 47cf477e34d36244f94bbb5dcd3c877a, type: 2}

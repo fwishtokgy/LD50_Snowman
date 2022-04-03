@@ -129,7 +129,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScaledStandardUnityCube: {fileID: 3685990733450915070}
   RelativeX: 0
+  season: 0
+  isTailEnd: 0
+  tileRenderer: {fileID: 3685990733450915071}
   IsTransitioning: 0
+  gridMap: {fileID: 6182363829748345644}
 --- !u!114 &6182363829748345644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e2fe380d6cc59f40ac3421a34f5e69b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  columns: 0
+  DropFactor: 0
 --- !u!1 &3685990733450915065
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +207,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1a882857e939b3b47823019b5e4a766f, type: 2}
+  - {fileID: 2100000, guid: a8aaabe98e35d7b408997eaa575ee361, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

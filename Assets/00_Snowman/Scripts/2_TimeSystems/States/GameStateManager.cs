@@ -21,6 +21,7 @@ public class GameStateManager : Singleton<GameStateManager>
     }
 
     protected StateType currentState;
+    public StateType CurrentState { get { return currentState; } }
 
     [SerializeField]
     protected StateType StartingState;

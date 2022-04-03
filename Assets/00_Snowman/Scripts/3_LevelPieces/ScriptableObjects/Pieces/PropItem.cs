@@ -12,4 +12,6 @@ public class PropItem : ScriptableObject
     public NumRange<float> SizeRange;
 
     public List<Color> ColorPool;
+
+    public int Chance;
 }

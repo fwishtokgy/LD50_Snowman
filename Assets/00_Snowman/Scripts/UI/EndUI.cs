@@ -23,6 +23,9 @@ public class EndUI : MyStateMonoBehaviour
     [SerializeField]
     protected LevelHandler levelHandler;
 
+    [SerializeField]
+    protected ParticleSystem SplashParticles;
+
     void Start()
     {
         StartCoroutine(WaitForStateManager(StateType.END));
@@ -34,10 +37,11 @@ public class EndUI : MyStateMonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && GameStateManager.Instance.CurrentState == StateType.END)
         {
             WipeData();
             GameStateManager.Instance.ChangeState(StateType.START);
+            SplashParticles.Play();
         }
     }
 

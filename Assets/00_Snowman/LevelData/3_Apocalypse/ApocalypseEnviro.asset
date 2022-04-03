@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ApocalypseEnviro
   m_EditorClassIdentifier: 
   sunSize: 0
-  TopSky: {r: 0, g: 0, b: 0, a: 0}
-  MidSky: {r: 0, g: 0, b: 0, a: 0}
-  BotSky: {r: 0, g: 0, b: 0, a: 0}
-  Lighting: {r: 0, g: 0, b: 0, a: 0}
-  NormalMaterial: {fileID: 0}
-  LastTileMaterial: {fileID: 0}
+  TopSky: {r: 1, g: 0.039215688, b: 0, a: 1}
+  MidSky: {r: 1, g: 0.5803922, b: 0.5254902, a: 1}
+  BotSky: {r: 0.627451, g: 0.57254905, b: 0.7176471, a: 1}
+  Lighting: {r: 1, g: 0.9450981, b: 0.7607844, a: 1}
+  NormalMaterial: {fileID: 2100000, guid: fa070e3553338294bbc04cdf7a94a3b0, type: 2}
+  LastTileMaterial: {fileID: 2100000, guid: 2cd3b842081d8c44e874e268ece7bdc4, type: 2}

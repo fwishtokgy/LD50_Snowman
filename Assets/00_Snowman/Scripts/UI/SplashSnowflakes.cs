@@ -17,10 +17,4 @@ public class SplashSnowflakes : MainPlayMonoBehaviour
         base.OnStateStart();
         SplashParticles.Stop();
     }
-
-    protected override void OnStateEnd()
-    {
-        base.OnStateEnd();
-        SplashParticles.Play();
-    }
 }

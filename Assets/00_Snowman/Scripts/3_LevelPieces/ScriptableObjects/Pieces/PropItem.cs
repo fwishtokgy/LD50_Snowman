@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PropItem : MonoBehaviour
+[CreateAssetMenu(fileName = "Data", menuName = "LevelInfo/PropItem", order = 1)]
+public class PropItem : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject ItemPrefab;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public PropPlacement Placements;
+
+    public NumRange<float> SizeRange;
+
+    public List<Color> ColorPool;
 }

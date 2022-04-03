@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DropItem : MonoBehaviour
+[CreateAssetMenu(fileName = "Data", menuName = "LevelInfo/DropItem", order = 0)]
+public class DropItem : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject ItemPrefab;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public HitType hitType;
+
+    public bool IsStoreableInBag;
+
+    public int Value;
 }

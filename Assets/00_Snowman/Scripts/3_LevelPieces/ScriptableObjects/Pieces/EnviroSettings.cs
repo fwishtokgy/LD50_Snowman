@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnviroSettings : MonoBehaviour
+[CreateAssetMenu(fileName = "Data", menuName = "LevelInfo/EnviroSettings", order = 2)]
+public class EnviroSettings : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float sunSize;
+    public Color TopSky;
+    public Color MidSky;    // also affects fog
+    public Color BotSky;
+    public Color Lighting;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Material NormalMaterial;
+    public Material LastTileMaterial;
 }

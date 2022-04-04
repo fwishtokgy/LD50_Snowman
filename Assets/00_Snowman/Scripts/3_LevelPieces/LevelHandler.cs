@@ -63,6 +63,7 @@ public class LevelHandler : MainPlayMonoBehaviour
 
     public void Reset()
     {
+        DaysPassedInSeason = 0;
         currentSeason = LevelDataStorage.StartingSeason;
         OnNewSeason?.Invoke(LevelData[currentSeason]);
     }

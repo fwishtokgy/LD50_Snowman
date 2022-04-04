@@ -28,7 +28,7 @@ public class RNGProfileInitiator : MonoBehaviour
         var counter = 0;
 
         data.ItemRNG = new RNGProfile();
-        data.ItemRNG.SetChanceOfDrop(data.ChanceOfDrop);
+        data.ItemRNG.SetChanceOfDrop(data.ChanceOfNoDrop);
         foreach (var drop in data.Drops)
         {
             counter++;
@@ -48,10 +48,10 @@ public class RNGProfileInitiator : MonoBehaviour
         data.MidFrontRNG = new RNGProfile();
         data.FrontPropRNG = new RNGProfile();
 
-        data.BackPropRNG.SetChanceOfDrop(data.PropDensity);
-        data.MidBackRNG.SetChanceOfDrop(data.PropDensity);
-        data.MidFrontRNG.SetChanceOfDrop(data.PropDensity);
-        data.FrontPropRNG.SetChanceOfDrop(data.PropDensity);
+        data.BackPropRNG.SetChanceOfDrop(data.PropNoDensity);
+        data.MidBackRNG.SetChanceOfDrop(data.PropNoDensity);
+        data.MidFrontRNG.SetChanceOfDrop(data.PropNoDensity);
+        data.FrontPropRNG.SetChanceOfDrop(data.PropNoDensity);
 
         foreach (var prop in data.Props)
         {

@@ -70,7 +70,6 @@ public class LevelHandler : MainPlayMonoBehaviour
     protected void ClearNodes()
     {
         TileMaster.ClearAllNodes();
-        Reset();
     }
 
     protected void OnNodePassed(TileNode node)

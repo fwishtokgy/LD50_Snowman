@@ -14,8 +14,8 @@ public class LevelData : ScriptableObject
     public Color PrimaryColor;
     public float RiseRate;
 
-    public float ChanceOfDrop;
-    public float PropDensity;
+    public int ChanceOfNoDrop;
+    public int PropNoDensity;
 
     public RNGProfile ItemRNG;
     public RNGProfile BackPropRNG;

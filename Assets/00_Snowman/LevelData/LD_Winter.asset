@@ -21,8 +21,8 @@ MonoBehaviour:
   Props:
   - {fileID: 11400000, guid: bc9c596e57c839a45946b56c130d4b5f, type: 2}
   Environment: {fileID: 11400000, guid: 3de7078c36ec1114c9214f3625e29fd9, type: 2}
-  LengthInTicks: 2
+  LengthInTicks: 4
   PrimaryColor: {r: 0.2688679, g: 0.5853795, b: 1, a: 1}
   RiseRate: 0
-  ChanceOfDrop: 0.5
-  PropDensity: 0.8
+  ChanceOfNoDrop: 400
+  PropNoDensity: 0

@@ -35,6 +35,11 @@ public class RNGProfile
     {
         NoDropChance = 200;
     }
+    public void SetChanceOfDrop(int chance)
+    {
+        NoDropChance = chance;
+    }
+
 
     public GameObject RetrieveRandomItem()
     {

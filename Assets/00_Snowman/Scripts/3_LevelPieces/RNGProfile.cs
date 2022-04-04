@@ -1,14 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RNGProfile : MonoBehaviour
+public class RNGProfile
 {
     protected int CumulativeChance;
 
     protected Dictionary<int, GameObject> allItems;
 
     protected BinarySearchTree Items;
+
+    protected int NoDropChance;
+
     public void AddItem(GameObject item, int Chance)
     {
         if (allItems == null)
@@ -25,11 +27,26 @@ public class RNGProfile : MonoBehaviour
         }
         Items.Add(CumulativeChance);
     }
+    public void SetChanceOfNoDrop(int chance)
+    {
+        NoDropChance = chance;
+    }
+    public void SetChanceOfDrop(float chance)
+    {
+        NoDropChance = 200;
+    }
 
     public GameObject RetrieveRandomItem()
     {
-        var rng = Random.Range(0, CumulativeChance);
-        var index = Items.Find(rng);
-        return allItems[index];
+        if (Items == null) return null;
+        //Debug.Log("Attempting Retrieval within "+ allItems.Count);
+        var fullChance = NoDropChance + CumulativeChance;
+        var rng = Random.Range(0, fullChance);
+        if (rng <= CumulativeChance)
+        {
+            var index = Items.Find(rng);
+            return allItems[index];
+        }
+        return null;
     }
 }

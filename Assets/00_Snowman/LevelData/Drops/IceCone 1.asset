@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78db20d1717404f4690eb818d8ff8a71, type: 3}
-  m_Name: PineTree
+  m_Script: {fileID: 11500000, guid: 24f00964b16bc3c4fb5e0db92c0bc307, type: 3}
+  m_Name: IceCone 1
   m_EditorClassIdentifier: 
-  ItemPrefab: {fileID: 0}
-  Placements: 0
-  SizeRange:
-    Min: 0
-    Max: 0
-  ColorPool: []
+  ItemPrefab: {fileID: 6959846762697507292, guid: ff5cdb2e6217b0e49becf148ee3261b7, type: 3}
+  hitType: 0
+  IsStoreableInBag: 0
+  Value: 5
+  Chance: 20

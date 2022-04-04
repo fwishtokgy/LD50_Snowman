@@ -11,7 +11,7 @@ public class TimeUI : MainPlayMonoBehaviour
     [SerializeField]
     protected TMP_Text timeText;
 
-    protected const string format = "{0:D2}:{1:D2}:{2:D2}.{3:G3}";
+    protected const string format = "{0:D2}:{1:D2}:{2:D2}.{3:D2}";
 
     // Update is called once per frame
     void Update()
@@ -24,6 +24,6 @@ public class TimeUI : MainPlayMonoBehaviour
 
     protected string ParsedTime()
     {
-        return string.Format(format, gameTime.Hours, gameTime.Minutes, gameTime.Seconds, (int)(gameTime.MicroSeconds * 1000));
+        return string.Format(format, gameTime.Hours, gameTime.Minutes, gameTime.Seconds, (int)(gameTime.MicroSeconds * 100));
     }
 }

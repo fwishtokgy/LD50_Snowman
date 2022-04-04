@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78db20d1717404f4690eb818d8ff8a71, type: 3}
   m_Name: PineTree
   m_EditorClassIdentifier: 
-  ItemPrefab: {fileID: 0}
+  ItemPrefab: {fileID: 711480927687950765, guid: bfbc440243014784d88f29e9e266a23e, type: 3}
   Placements: 0
   SizeRange:
     Min: 0
     Max: 0
   ColorPool: []
+  Chance: 0

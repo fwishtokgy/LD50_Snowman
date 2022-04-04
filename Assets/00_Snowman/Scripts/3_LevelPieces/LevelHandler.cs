@@ -12,6 +12,11 @@ public class LevelHandler : MainPlayMonoBehaviour
 
     protected Dictionary<Season, LevelData> LevelData;
 
+    [SerializeField]
+    protected SnowmanState Snowman;
+
+    public List<LevelData> Levels { get { return LevelDataStorage.Levels; } }
+
     protected Season currentSeason;
 
     public LevelData CurrentSeason
@@ -38,6 +43,7 @@ public class LevelHandler : MainPlayMonoBehaviour
     {
         TileMaster.OnStartedActivatingNode += OnNodePassed;
         GameTick.OnGeneratedTicksIncrement += CheckSeason;
+        Snowman.OnDeath += ClearNodes;
 
         LevelData = new Dictionary<Season, LevelData>();
         foreach (var leveldata in LevelDataStorage.Levels)
@@ -61,14 +67,75 @@ public class LevelHandler : MainPlayMonoBehaviour
         OnNewSeason?.Invoke(LevelData[currentSeason]);
     }
 
+    protected void ClearNodes()
+    {
+        TileMaster.ClearAllNodes();
+        Reset();
+    }
+
     protected void OnNodePassed(TileNode node)
     {
         if (IsRunning && IsInitialized)
         {
-            var gridmap = node.GridMap;
             var data = LevelData[currentSeason];
 
+            StartCoroutine(SetupNode(node, data));
+
             node.TileRenderer.material = data.Environment.NormalMaterial;
+        }
+    }
+
+    IEnumerator SetupNode(TileNode node, LevelData data)
+    {
+        print("SetupNode for " + data.LevelSeason);
+        var gridmap = node.GridMap;
+        var pointsPerFrame = node.GridMap.Rows;
+        var count = 0;
+        print("-> points " + gridmap.GridPoints.Count);
+        foreach (var point in gridmap.GridPoints)
+        {
+            count++;
+            GameObject possibleItem = null;
+
+            print("point " + point.itemType + " " + point.Placement);
+
+            if (point.itemType == ItemType.DROP)
+            {
+                possibleItem = data.ItemRNG.RetrieveRandomItem();
+            }
+            else
+            {
+                if (point.Placement == PropPlacement.BACKGROUND)
+                {
+                    possibleItem = data.BackPropRNG.RetrieveRandomItem();
+                }
+                else if (point.Placement == PropPlacement.MIDBACK)
+                {
+                    possibleItem = data.MidBackRNG.RetrieveRandomItem();
+                }
+                else if (point.Placement == PropPlacement.MIDFRONT)
+                {
+                    possibleItem = data.MidFrontRNG.RetrieveRandomItem();
+                }
+                else if (point.Placement == PropPlacement.FRONT)
+                {
+                    possibleItem = data.FrontPropRNG.RetrieveRandomItem();
+                }
+            }
+
+            if (possibleItem != null)
+            {
+                print("Adding new item " + possibleItem.name);
+                var newItem = Instantiate(possibleItem, node.transform);
+                node.AddItem(newItem);
+                newItem.transform.localPosition = point.Position;
+            }
+
+            if (count > pointsPerFrame)
+            {
+                count = 0;
+                yield return new WaitForEndOfFrame();
+            }
         }
     }
 

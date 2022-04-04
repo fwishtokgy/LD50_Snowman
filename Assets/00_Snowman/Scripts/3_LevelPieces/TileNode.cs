@@ -53,6 +53,26 @@ public class TileNode : MyMonoBehaviour
     public SingleTileStateEvent OnActivated;
     public SingleTileStateEvent OnDeactivated;
 
+    protected Queue<GameObject> PropsAndDrops;
+
+    public void AddItem(GameObject item)
+    {
+        if (PropsAndDrops == null)
+        {
+            PropsAndDrops = new Queue<GameObject>();
+        }
+        PropsAndDrops.Enqueue(item);
+    }
+    public void ClearItems()
+    {
+        if (PropsAndDrops == null) return;
+        while (PropsAndDrops.Count > 0)
+        {
+            var victim = PropsAndDrops.Dequeue();
+            Destroy(victim);
+        }
+    }
+
     [SerializeField]
     protected TileNodeGrid gridMap;
     public TileNodeGrid GridMap { get { return gridMap; } }

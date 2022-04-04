@@ -14,9 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelSeason: 4
   NextSeason: 4
-  Drops: []
-  Props: []
+  Drops:
+  - {fileID: 11400000, guid: 9a4649b588426434ea435c5e4f31d3ac, type: 2}
+  - {fileID: 11400000, guid: 90248283e9c09e94cbf8ed750f045098, type: 2}
+  - {fileID: 11400000, guid: ad8ec3bfa46884a4b8ca5f4dbf60f0d4, type: 2}
+  Props:
+  - {fileID: 11400000, guid: 540e879997e8b5a4489c3d66ec5477c2, type: 2}
   Environment: {fileID: 11400000, guid: 1ca59df815899344cbffc264c9965f53, type: 2}
   LengthInTicks: 80
   PrimaryColor: {r: 0.91372555, g: 0.12941177, b: 0.68235296, a: 1}
   RiseRate: 2
+  ChanceOfDrop: 0
+  PropDensity: 0

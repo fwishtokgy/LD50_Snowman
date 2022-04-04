@@ -105,6 +105,8 @@ public class TileNodeMaster : MyMonoBehaviour
             newnode.RelativeX = nindex * testnode.Width;
             var x = RelativeZero - newnode.RelativeX;
 
+            newnode.GridMap.Initialize(testnode.Width, testnode.Depth);
+
             if (nindex < buffer)
             {
                 newnode.transform.position = new Vector3(RightMostActivePoint + newnode.Width, GenerationHeight, midpoint.z);
@@ -185,6 +187,15 @@ public class TileNodeMaster : MyMonoBehaviour
         }
         node.transform.position = endpoint;
         node.IsTransitioning = false;
+        node.ClearItems();
+    }
+
+    public void ClearAllNodes()
+    {
+        foreach (var node in allNodes)
+        {
+            node.ClearItems();
+        }
     }
 
     private void Update()
